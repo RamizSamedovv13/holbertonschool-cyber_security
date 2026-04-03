@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2009
+ls /proc | grep '^[0-9]' | while read -r pid; do
+    if grep -q bash "/proc/$pid/comm" 2>/dev/null; then
+        echo "$pid $(cat /proc/$pid/comm)"
+    fi
+done
