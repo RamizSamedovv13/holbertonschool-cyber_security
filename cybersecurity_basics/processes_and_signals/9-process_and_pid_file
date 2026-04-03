@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
-# This script writes its PID to a file, runs forever and handles signals
+# This script handles SIGTERM and runs forever
 
 echo $$ > /tmp/myscript.pid
 
 trap 'echo "I hate the kill command"' SIGTERM
-trap 'echo "Y U no love me?!"' SIGINT
-trap 'rm -f /tmp/myscript.pid; exit' SIGQUIT SIGTERM
 
 while true; do
     echo "To infinity and beyond"
