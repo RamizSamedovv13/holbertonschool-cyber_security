@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script manages the manage_my_process daemon
+# Script that manages manage_my_process daemon
 
 FILE="/tmp/my_process.pid"
 
@@ -19,8 +19,15 @@ stop() {
 }
 
 restart() {
-    stop
-    start
+    if [ -f "$FILE" ]; then
+        PID=$(cat "$FILE")
+        kill "$PID"
+        rm -f "$FILE"
+    fi
+
+    bash ./manage_my_process &
+    echo $! > "$FILE"
+
     echo "manage_my_process restarted"
 }
 
