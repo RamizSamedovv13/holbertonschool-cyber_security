@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-# Script that manages manage_my_process daemon
+# This script manages the manage_my_process daemon
 
 FILE="/tmp/my_process.pid"
 
