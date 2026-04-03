@@ -1,7 +1,12 @@
-#!/bin/bash
+restart() {
+    if [ -f "$FILE" ]; then
+        PID=$(cat "$FILE")
+        kill "$PID"
+        rm -f "$FILE"
+    fi
 
-while true
-do
-    echo "I am alive!" >> /tmp/my_process
-    sleep 2
-done
+    bash ./manage_my_process &
+    echo $! > "$FILE"
+
+    echo "manage_my_process restarted"
+}
