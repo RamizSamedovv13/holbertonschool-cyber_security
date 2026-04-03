@@ -1,3 +1,23 @@
+#!/usr/bin/env bash
+# Script that manages manage_my_process daemon
+
+FILE="/tmp/my_process.pid"
+
+start() {
+    ./manage_my_process &
+    echo $! > "$FILE"
+    echo "manage_my_process started"
+}
+
+stop() {
+    if [ -f "$FILE" ]; then
+        PID=$(cat "$FILE")
+        kill "$PID"
+        rm -f "$FILE"
+    fi
+    echo "manage_my_process stopped"
+}
+
 restart() {
     if [ -f "$FILE" ]; then
         PID=$(cat "$FILE")
@@ -5,8 +25,23 @@ restart() {
         rm -f "$FILE"
     fi
 
-    bash ./manage_my_process &
+    ./manage_my_process &
     echo $! > "$FILE"
 
     echo "manage_my_process restarted"
 }
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        restart
+        ;;
+    *)
+        echo "Usage: manage_my_process {start|stop|restart}"
+        ;;
+esac
