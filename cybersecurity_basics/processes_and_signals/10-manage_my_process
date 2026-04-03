@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 FILE="/tmp/my_process.pid"
-PROCESS="/tmp/manage_my_process"
 
 start() {
     bash ./manage_my_process &
