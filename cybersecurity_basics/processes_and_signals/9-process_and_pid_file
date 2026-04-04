@@ -1,11 +1,20 @@
 #!/usr/bin/env bash
-# This script handles SIGTERM and runs forever
 
+# PID faylı yarat
 echo $$ > /tmp/myscript.pid
 
-trap 'echo "I hate the kill command"' SIGTERM
+# SIGINT (Ctrl+C)
+trap 'echo "Y U no love me?!"' SIGINT
 
-while true; do
+# SIGTERM (kill)
+trap 'echo "I hate the kill command"; rm -f /tmp/myscript.pid; exit' SIGTERM
+
+# SIGQUIT (kill -3)
+trap 'rm -f /tmp/myscript.pid; exit' SIGQUIT
+
+# Sonsuz loop
+while true
+do
     echo "To infinity and beyond"
-    sleep 2
+    sleep 1
 done
