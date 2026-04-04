@@ -1,18 +1,12 @@
 #!/usr/bin/env bash
+# This script creates a PID file and handles signals
 
-# PID faylı yarat
 echo $$ > /tmp/myscript.pid
 
-# SIGINT (Ctrl+C)
 trap 'echo "Y U no love me?!"' SIGINT
-
-# SIGTERM (kill)
 trap 'echo "I hate the kill command"; rm -f /tmp/myscript.pid; exit' SIGTERM
-
-# SIGQUIT (kill -3)
 trap 'rm -f /tmp/myscript.pid; exit' SIGQUIT
 
-# Sonsuz loop
 while true
 do
     echo "To infinity and beyond"
