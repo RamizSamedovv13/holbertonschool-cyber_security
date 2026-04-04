@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# This script manages the manage_my_process program
 
-case "$1" in
-    start)
-        ./manage_my_process &
-        echo $! > /tmp/my_process.pid
-        echo "manage_my_process started"
-        ;;
+# This script runs indefinitely and writes a message to a file every 2 seconds
+
+while true
+do
+    echo "I am alive!" >> /tmp/my_process   # Append message to file
+    sleep 2                                 # Wait for 2 seconds
+done

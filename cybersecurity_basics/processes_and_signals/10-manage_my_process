@@ -1,24 +1,52 @@
 #!/usr/bin/env bash
 
+# Path to PID file
+PID_FILE="/tmp/my_process.pid"
+
+# Script name
+PROCESS="./manage_my_process"
+
 case "$1" in
     start)
-        ./manage_my_process &
-        echo $! > /tmp/my_process.pid
+        # Start the process in background
+        $PROCESS &
+
+        # Save PID of last background process
+        echo $! > "$PID_FILE"
+
+        # Display message
         echo "manage_my_process started"
         ;;
+
     stop)
-        kill "$(cat /tmp/my_process.pid)"
-        rm /tmp/my_process.pid
+        # Check if PID file exists
+        if [ -f "$PID_FILE" ]; then
+            # Kill process using PID
+            kill "$(cat $PID_FILE)"
+
+            # Remove PID file
+            rm "$PID_FILE"
+        fi
+
         echo "manage_my_process stopped"
         ;;
+
     restart)
-        kill "$(cat /tmp/my_process.pid)"
-        rm /tmp/my_process.pid
-        ./manage_my_process &
-        echo $! > /tmp/my_process.pid
+        # Stop process first
+        if [ -f "$PID_FILE" ]; then
+            kill "$(cat $PID_FILE)"
+            rm "$PID_FILE"
+        fi
+
+        # Start again
+        $PROCESS &
+        echo $! > "$PID_FILE"
+
         echo "manage_my_process restarted"
         ;;
+
     *)
+        # If wrong argument or no argument
         echo "Usage: manage_my_process {start|stop|restart}"
         ;;
 esac
