@@ -1,8 +1,0 @@
-# Dirsearch started Fri Jun 12 16:29:14 2026 as: /usr/lib/python3/dist-packages/dirsearch/dirsearch.py -u http://10.42.49.51
-
-200     2KB  http://10.42.49.51/admin
-302   199B   http://10.42.49.51/admin_panel    -> REDIRECTS TO: /admin
-200    54KB  http://10.42.49.51/contact
-200     2KB  http://10.42.49.51/login
-302   199B   http://10.42.49.51/orders    -> REDIRECTS TO: /login
-200     4KB  http://10.42.49.51/products
