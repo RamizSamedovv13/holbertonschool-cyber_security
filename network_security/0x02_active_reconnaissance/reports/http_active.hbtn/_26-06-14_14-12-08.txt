@@ -1,0 +1,8 @@
+# Dirsearch started Sun Jun 14 14:13:28 2026 as: /usr/lib/python3/dist-packages/dirsearch/dirsearch.py -u http://active.hbtn
+
+200     2KB  http://active.hbtn/admin
+302   199B   http://active.hbtn/admin_panel    -> REDIRECTS TO: /admin
+200    54KB  http://active.hbtn/contact
+200     2KB  http://active.hbtn/login
+302   199B   http://active.hbtn/orders    -> REDIRECTS TO: /login
+200     4KB  http://active.hbtn/products
