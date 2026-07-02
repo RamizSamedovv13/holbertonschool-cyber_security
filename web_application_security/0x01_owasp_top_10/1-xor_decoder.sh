@@ -1,16 +1,16 @@
 #!/bin/bash
 
-hash="$1"
+# Check if an argument was provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 {xor}HASH"
+    exit 1
+fi
 
-# {xor} prefixini silirik
-encoded="${hash#\{xor\}}"
+# Remove the {xor} prefix if present
+encoded_string="${1#\{xor\}}"
 
-# Base64 decode edirik, sonra hər byte-ı 0x5f ilə XOR edirik
-echo "$encoded" | base64 -d | xxd -p -c 256 | while read -r hex; do
-    for ((i=0; i<${#hex}; i+=2)); do
-        byte=$((16#${hex:i:2}))
-        printf "\\$(printf '%03o' $((byte ^ 0x5f)))"
-    done
-done
-
-echo
+# 1. Decode from Base64
+# 2. Use 'tr' or a loop to XOR each byte with '_' (95)
+# Using perl for a clean one-liner XOR operation
+echo "$encoded_string" | base64 -d | perl -pe '$_ ^= "_" x length'
+echo "" # Add a newline to match your output example
