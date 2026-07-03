@@ -1,0 +1,4 @@
+# Dirsearch started Thu Jul  2 22:14:25 2026 as: /usr/lib/python3/dist-packages/dirsearch/dirsearch.py -u http://web0x01.hbtn
+
+308   237B   http://web0x01.hbtn/logs    -> REDIRECTS TO: http://web0x01.hbtn/logs/
+200     2MB  http://web0x01.hbtn/logs/
