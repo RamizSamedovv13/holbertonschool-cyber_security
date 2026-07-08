@@ -1,0 +1,8 @@
+GET /api/a3/sql_injection/all_orders?status=Paid HTTP/1.1
+Host: web0x01.hbtn
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0
+Accept: application/json, text/plain, */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: close
+Cookie: hijack_session=385cc2c5-c2d6-4dde-965-1728762-17830355041; session=kkwT5DO3Ztq0V-5iotlIr0saQrWBoPvW_l1iZygql7s.vGn3PkCAE2rSpL_0j0ZnsHbj7uc
